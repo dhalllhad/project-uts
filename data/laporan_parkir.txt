@@ -9,3 +9,129 @@ Waktu Keluar    : 19:00
 Biaya Parkir    : Rp14000
 ------------------------------------
 
+Nomor Kendaraan : AB1842CD
+Jenis Kendaraan : MOTOR
+Waktu Masuk     : 08:00
+Waktu Keluar    : 10:30
+Biaya Parkir    : Rp10000
+------------------------------------
+
+Nomor Kendaraan : AE2731FG
+Jenis Kendaraan : motor
+Waktu Masuk     : 08:20
+Waktu Keluar    : 11:00
+Biaya Parkir    : Rp5000
+------------------------------------
+
+Nomor Kendaraan : H1567JK
+Jenis Kendaraan : mobil
+Waktu Masuk     : 09:10
+Waktu Keluar    : 12:10
+Biaya Parkir    : Rp12000
+------------------------------------
+
+Nomor Kendaraan : K2048LM
+Jenis Kendaraan : motor
+Waktu Masuk     : 09:30
+Waktu Keluar    : 10:30
+Biaya Parkir    : Rp2000
+------------------------------------
+
+Nomor Kendaraan : AA3185NP
+Jenis Kendaraan : mobil
+Waktu Masuk     : 10:00
+Waktu Keluar    : 13:30
+Biaya Parkir    : Rp14000
+------------------------------------
+
+Nomor Kendaraan : R4276QS
+Jenis Kendaraan : motor
+Waktu Masuk     : 10:15
+Waktu Keluar    : 12:15
+Biaya Parkir    : Rp4000
+------------------------------------
+
+Nomor Kendaraan : G1984TU
+Jenis Kendaraan : mobil
+Waktu Masuk     : 11:00
+Waktu Keluar    : 14:00
+Biaya Parkir    : Rp12000
+------------------------------------
+
+Nomor Kendaraan : AB5621VW
+Jenis Kendaraan : motor
+Waktu Masuk     : 11:25
+Waktu Keluar    : 15:25
+Biaya Parkir    : Rp8000
+------------------------------------
+
+Nomor Kendaraan : AD7350XY
+Jenis Kendaraan : mobil
+Waktu Masuk     : 12:30
+Waktu Keluar    : 16:00
+Biaya Parkir    : Rp14000
+------------------------------------
+
+Nomor Kendaraan : AA8402ZA
+Jenis Kendaraan : motor
+Waktu Masuk     : 13:00
+Waktu Keluar    : 14:30
+Biaya Parkir    : Rp3000
+------------------------------------
+
+Nomor Kendaraan : H2931BC
+Jenis Kendaraan : mobil
+Waktu Masuk     : 13:15
+Waktu Keluar    : 17:15
+Biaya Parkir    : Rp16000
+------------------------------------
+
+Nomor Kendaraan : K6742DE
+Jenis Kendaraan : motor
+Waktu Masuk     : 14:00
+Waktu Keluar    : 18:00
+Biaya Parkir    : Rp8000
+------------------------------------
+
+Nomor Kendaraan : R5183FG
+Jenis Kendaraan : mobil
+Waktu Masuk     : 14:20
+Waktu Keluar    : 16:50
+Biaya Parkir    : Rp10000
+------------------------------------
+
+Nomor Kendaraan : G7624HJ
+Jenis Kendaraan : motor
+Waktu Masuk     : 15:00
+Waktu Keluar    : 16:00
+Biaya Parkir    : Rp2000
+------------------------------------
+
+Nomor Kendaraan : AB9315KL
+Jenis Kendaraan : mobil
+Waktu Masuk     : 15:30
+Waktu Keluar    : 19:30
+Biaya Parkir    : Rp16000
+------------------------------------
+
+Nomor Kendaraan : AA2158PQ
+Jenis Kendaraan : mobil
+Waktu Masuk     : 17:00
+Waktu Keluar    : 20:30
+Biaya Parkir    : Rp14000
+------------------------------------
+
+Nomor Kendaraan : AB1123BN
+Jenis Kendaraan : mobil
+Waktu Masuk     : 12:00
+Waktu Keluar    : 17:00
+Biaya Parkir    : Rp10000
+------------------------------------
+
+Nomor Kendaraan : AG8787HH
+Jenis Kendaraan : MOBIL
+Waktu Masuk     : 18:09
+Waktu Keluar    : 23:08
+Biaya Parkir    : Rp10000
+------------------------------------
+
