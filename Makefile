@@ -1,5 +1,6 @@
 CXX = g++
 CXXFLAGS = -Wall -std=c++17
+CPPFLAGS = -Iinclude
 TARGET = parkir
 
 SOURCES = src/main.cpp src/data_parkir.cpp src/file_parkir.cpp src/menu_parkir.cpp
@@ -11,7 +12,7 @@ $(TARGET): $(OBJECTS)
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJECTS)
 
 src/%.o: src/%.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
 
 run: $(TARGET)
 	./$(TARGET)
