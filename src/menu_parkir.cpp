@@ -1,6 +1,9 @@
-
 #include <iostream>
+#include <string>
+#include <cctype>
+#include "file_parkir.h"
 #include "menu_parkir.h"
+
 using namespace std;
 
 // 1. Menambah kendaraan
@@ -17,25 +20,50 @@ void tambahKendaraan(Kendaraan data[], int &jumlah)
     cout << "Jenis kendaraan: ";
     cin >> data[jumlah].jenis;
 
-    cout << "Jam masuk: ";
-    cin >> data[jumlah].masuk.jam;
+    string waktuMasuk, waktuKeluar;
 
-    cout << "Menit masuk: ";
-    cin >> data[jumlah].masuk.menit;
+    cout << "Waktu masuk (JJ:MM): ";
+    cin >> waktuMasuk;
 
-    cout << "Jam keluar: ";
-    cin >> data[jumlah].keluar.jam;
+    cout << "Waktu keluar (JJ:MM): ";
+    cin >> waktuKeluar;
 
-    cout << "Menit keluar: ";
-    cin >> data[jumlah].keluar.menit;
+    if (waktuMasuk.length() != 5 ||
+        waktuKeluar.length() != 5 ||
+        waktuMasuk[2] != ':' ||
+        waktuKeluar[2] != ':') {
+        cout << "Format salah! Contoh: 09:55\n";
+        return;
+    }
 
-    // Validasi waktu
+    if (!isdigit(waktuMasuk[0]) ||
+        !isdigit(waktuMasuk[1]) ||
+        !isdigit(waktuMasuk[3]) ||
+        !isdigit(waktuMasuk[4]) ||
+        !isdigit(waktuKeluar[0]) ||
+        !isdigit(waktuKeluar[1]) ||
+        !isdigit(waktuKeluar[3]) ||
+        !isdigit(waktuKeluar[4])) {
+        cout << "Waktu harus berupa angka!\n";
+        return;
+    }
+
+    data[jumlah].masuk.jam =
+        stoi(waktuMasuk.substr(0, 2));
+    data[jumlah].masuk.menit =
+        stoi(waktuMasuk.substr(3, 2));
+
+    data[jumlah].keluar.jam =
+        stoi(waktuKeluar.substr(0, 2));
+    data[jumlah].keluar.menit =
+        stoi(waktuKeluar.substr(3, 2));
+
     if (data[jumlah].masuk.jam < 0 ||
         data[jumlah].masuk.jam > 23 ||
-        data[jumlah].keluar.jam < 0 ||
-        data[jumlah].keluar.jam > 23 ||
         data[jumlah].masuk.menit < 0 ||
         data[jumlah].masuk.menit > 59 ||
+        data[jumlah].keluar.jam < 0 ||
+        data[jumlah].keluar.jam > 23 ||
         data[jumlah].keluar.menit < 0 ||
         data[jumlah].keluar.menit > 59) {
         cout << "Waktu tidak valid!\n";
@@ -56,10 +84,11 @@ void tambahKendaraan(Kendaraan data[], int &jumlah)
     int durasi = keluar - masuk;
     int lamaJam = (durasi + 59) / 60;
 
-    // Contoh tarif Rp2.000 per jam
     data[jumlah].biaya = lamaJam * 2000;
 
     jumlah++;
+    simpanData(data, jumlah);
+
     cout << "Kendaraan berhasil ditambahkan.\n";
 }
 
@@ -72,11 +101,16 @@ void tampilkanKendaraan(Kendaraan data[], int jumlah)
     }
 
     cout << "\n=== DATA KENDARAAN ===\n";
+    cout << "No | Nomor | Jenis | Masuk | Keluar | Biaya\n";
 
     for (int i = 0; i < jumlah; i++) {
-        cout << i + 1 << ". "
+        cout << i + 1 << " | "
              << data[i].nomor << " | "
-             << data[i].jenis << " | Biaya: Rp"
+             << data[i].jenis << " | "
+             << data[i].masuk.jam << ":"
+             << data[i].masuk.menit << " | "
+             << data[i].keluar.jam << ":"
+             << data[i].keluar.menit << " | Rp"
              << data[i].biaya << '\n';
     }
 }
@@ -86,7 +120,7 @@ void cariKendaraan(Kendaraan data[], int jumlah)
 {
     string nomor;
 
-    cout << "Masukkan nomor kendaraan: ";
+    cout << "Nomor kendaraan yang dicari: ";
     cin >> nomor;
 
     for (int i = 0; i < jumlah; i++) {
@@ -101,7 +135,7 @@ void cariKendaraan(Kendaraan data[], int jumlah)
     cout << "Kendaraan tidak ditemukan.\n";
 }
 
-// 4. Mengurutkan kendaraan dengan Bubble Sort
+// 4. Mengurutkan kendaraan
 void urutkanKendaraan(Kendaraan data[], int jumlah)
 {
     for (int i = 0; i < jumlah - 1; i++) {
@@ -114,7 +148,8 @@ void urutkanKendaraan(Kendaraan data[], int jumlah)
         }
     }
 
-    cout << "Data kendaraan berhasil diurutkan.\n";
+    simpanData(data, jumlah);
+    cout << "Data berhasil diurutkan.\n";
 }
 
 // 5. Mengubah jenis kendaraan
@@ -130,6 +165,7 @@ void ubahKendaraan(Kendaraan data[], int jumlah)
             cout << "Jenis kendaraan baru: ";
             cin >> data[i].jenis;
 
+            simpanData(data, jumlah);
             cout << "Data berhasil diubah.\n";
             return;
         }
@@ -147,6 +183,7 @@ void hapusKendaraan(Kendaraan data[], int &jumlah)
     }
 
     string nomor;
+
     cout << "Nomor kendaraan yang ingin dihapus: ";
     cin >> nomor;
 
@@ -157,7 +194,9 @@ void hapusKendaraan(Kendaraan data[], int &jumlah)
             }
 
             jumlah--;
-            cout << "Data kendaraan berhasil dihapus.\n";
+            simpanData(data, jumlah);
+
+            cout << "Data berhasil dihapus.\n";
             return;
         }
     }
@@ -184,10 +223,10 @@ void infoMemori(Kendaraan data[])
 {
     cout << "\n=== INFORMASI MEMORI ===\n";
 
-    cout << "Ukuran struct WaktuParkir: "
+    cout << "Ukuran WaktuParkir: "
          << sizeof(WaktuParkir) << " byte\n";
 
-    cout << "Ukuran struct Kendaraan: "
+    cout << "Ukuran Kendaraan: "
          << sizeof(Kendaraan) << " byte\n";
 
     cout << "Ukuran array 20 kendaraan: "

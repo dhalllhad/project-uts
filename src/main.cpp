@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include "data_parkir.h"
 #include "file_parkir.h"
@@ -11,7 +12,7 @@ int main()
     Kendaraan data[MAKS_DATA];
     int jumlah = 0;
     int pilihan;
-
+    
     // Membaca data dari file
     bacaData(data, jumlah);
 
@@ -69,6 +70,7 @@ int main()
 
             default:
                 cout << "Pilihan tidak valid!\n";
+                break;
         }
 
     } while (pilihan != 9);

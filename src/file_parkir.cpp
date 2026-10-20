@@ -1,54 +1,94 @@
-
 #include "file_parkir.h"
 #include <iostream>
 #include <fstream>
+#include <iomanip>
+#include <string>
+
 using namespace std;
 
-// Membaca data dari file
-void bacaData(Kendaraan data[], int &jumlah)
+// Membuat laporan parkir
+void buatLaporan(Kendaraan data[], int jumlah)
 {
-    ifstream file("../data/parkir.txt");
-    jumlah = 0;
+    ofstream file("../data/laporan_parkir.txt");
 
     if (!file.is_open()) {
-        cout << "File data belum dapat dibuka.\n";
+        cout << "Gagal membuat laporan parkir!\n";
         return;
     }
 
-    while (jumlah < 20 &&
-           file >> data[jumlah].nomor
-                >> data[jumlah].jenis
-                >> data[jumlah].masuk.jam
-                >> data[jumlah].masuk.menit
-                >> data[jumlah].keluar.jam
-                >> data[jumlah].keluar.menit
-                >> data[jumlah].biaya) {
-        jumlah++;
+    file << "====================================\n";
+    file << "     LAPORAN PARKIR KENDARAAN\n";
+    file << "====================================\n\n";
+
+    for (int i = 0; i < jumlah; i++) {
+        file << "Nomor Kendaraan : " << data[i].nomor << '\n';
+        file << "Jenis Kendaraan : " << data[i].jenis << '\n';
+
+        file << "Waktu Masuk     : "
+             << setw(2) << setfill('0') << data[i].masuk.jam
+             << ":"
+             << setw(2) << setfill('0') << data[i].masuk.menit
+             << '\n';
+
+        file << "Waktu Keluar    : "
+             << setw(2) << setfill('0') << data[i].keluar.jam
+             << ":"
+             << setw(2) << setfill('0') << data[i].keluar.menit
+             << '\n';
+
+        file << "Biaya Parkir    : Rp" << data[i].biaya << '\n';
+        file << "------------------------------------\n\n";
     }
 
     file.close();
 }
 
-// Menyimpan data ke file
-void simpanData(Kendaraan data[], int jumlah)
+// Membaca laporan parkir
+void bacaData(Kendaraan data[], int &jumlah)
 {
-    ofstream file("../data/parkir.txt");
+    ifstream file("../data/laporan_parkir.txt");
+    string baris;
+    jumlah = 0;
 
     if (!file.is_open()) {
-        cout << "File data tidak dapat disimpan.\n";
+        cout << "Laporan belum tersedia. Data masih kosong.\n";
         return;
     }
 
-    for (int i = 0; i < jumlah; i++) {
-        file << data[i].nomor << " "
-             << data[i].jenis << " "
-             << data[i].masuk.jam << " "
-             << data[i].masuk.menit << " "
-             << data[i].keluar.jam << " "
-             << data[i].keluar.menit << " "
-             << data[i].biaya << '\n';
+    while (getline(file, baris)) {
+        if (jumlah >= 20) {
+            break;
+        }
+
+        if (baris.find("Nomor Kendaraan : ") == 0) {
+            data[jumlah].nomor = baris.substr(19);
+
+            getline(file, baris);
+            data[jumlah].jenis = baris.substr(19);
+
+            getline(file, baris);
+            data[jumlah].masuk.jam = stoi(baris.substr(19, 2));
+            data[jumlah].masuk.menit = stoi(baris.substr(22, 2));
+
+            getline(file, baris);
+            data[jumlah].keluar.jam = stoi(baris.substr(19, 2));
+            data[jumlah].keluar.menit = stoi(baris.substr(22, 2));
+
+            getline(file, baris);
+            data[jumlah].biaya = stoi(baris.substr(19));
+
+            jumlah++;
+        }
     }
 
     file.close();
-    cout << "Data berhasil disimpan.\n";
+
+    cout << "Data dibaca: " << jumlah << " kendaraan.\n";
+}
+
+// Menyimpan data sekaligus membuat laporan
+void simpanData(Kendaraan data[], int jumlah)
+{
+    buatLaporan(data, jumlah);
+    cout << "Laporan berhasil disimpan.\n";
 }

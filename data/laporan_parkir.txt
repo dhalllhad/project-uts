@@ -1,0 +1,11 @@
+====================================
+     LAPORAN PARKIR KENDARAAN
+====================================
+
+Nomor Kendaraan : AC2345JJ
+Jenis Kendaraan : motor
+Waktu Masuk     : 12:00
+Waktu Keluar    : 19:00
+Biaya Parkir    : Rp14000
+------------------------------------
+
